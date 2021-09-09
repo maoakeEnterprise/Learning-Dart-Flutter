@@ -38,15 +38,20 @@ Widget buildHomePage(String titlevar){
       title: Text(titlevar),
     ),
     body: Center(
-      child: Card(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            stars,
-          ],
-        ),
-
-
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              stars,
+              Text('Im a best mannn '),
+              Text('Suppperer best'),
+            ],
+          ),
+        ],
       ),
     ),
   );
