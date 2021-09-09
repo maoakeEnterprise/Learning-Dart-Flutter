@@ -33,26 +33,38 @@ Widget buildHomePage(String titlevar){
     ],
   );
 
+  Widget tilesection = Container(
+
+  );
+
+  Widget buttonsection = Container(
+
+  );
+
   return Scaffold(
     appBar: AppBar(
-      title: Text(titlevar),
+      title: const Text('First Devoir'),
     ),
-    body: Center(
-      child: Row(
+    body: Column(
+      children: [Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              stars,
-              Text('Im a best mannn '),
-              Text('Suppperer best'),
+              Image.asset(
+                'images/lake.jpg',
+
+                height: 240,
+                fit: BoxFit.cover,
+              ),
+              Text('tilesection '),//
+              Text('buttonsection'),
+              Text('Textsection'),
             ],
           ),
         ],
-      ),
+      ),]
     ),
   );
 }
