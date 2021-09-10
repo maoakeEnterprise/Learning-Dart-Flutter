@@ -72,24 +72,31 @@ Widget buildHomePage(String titlevar, BuildContext context){
     ),
   );
 
-  Widget buttons = Column(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Icon(
-          Icons.phone,
-          color: Colors.blue[500],
-      ),
-      Text('Yes'),
-    ],
-  );
+  Column buttons(Color colorbu, String text, IconData iconData){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          iconData,
+          color: colorbu,
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            color: colorbu,
+          ),
+        ),
+      ],
+    );
+  }
 
   Widget buttonsection = Container(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        buttons,
-        buttons,
-        buttons,
+        buttons(Colors.blue, 'CALL', Icons.phone),
+        buttons(Colors.blue, 'ROUTE', Icons.mouse),
+        buttons(Colors.blue, 'SHARE', Icons.share),
       ],
     ),
   );
