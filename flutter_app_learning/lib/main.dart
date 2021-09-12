@@ -105,7 +105,7 @@ Widget buildHomePage(String titlevar, BuildContext context){
             ),
         ),
         // je dois mettre l'étoile et le 41 ici
-        FavoriteWidget(),
+        const FavoriteWidget(),
 
       ],
     ),
