@@ -10,7 +10,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,23 +17,65 @@ class MyApp extends StatelessWidget {
       home: buildHomePage('Je suis le best', context),
 
     );
+
   }
 }
+class FavoriteWidget extends StatefulWidget {
+  const FavoriteWidget({Key? key}) : super(key: key);
+
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            padding: EdgeInsets.all(0),
+            alignment: Alignment.center,
+            icon: (_isFavorited
+                ? const Icon(Icons.star)
+                :const Icon(Icons.star_border)
+            ),
+            color: Colors.red[500],
+            onPressed: _toggleFavorite,
+          ),
+        ),
+        SizedBox(
+          width: 18,
+          child: SizedBox(
+            child : Text('$_favoriteCount'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorited) {
+        _favoriteCount -= 1;
+        _isFavorited = false;
+      } else {
+        _favoriteCount += 1;
+        _isFavorited = true;
+      }
+    });
+  }
+// ···
+}
+
+
 
 Widget buildHomePage(String titlevar, BuildContext context){
-
-
-  var stars = Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      Icon(Icons.star, color: Colors.green[500],),
-      Icon(Icons.star, color: Colors.green[500],),
-      Icon(Icons.star, color: Colors.green[500],),
-      Icon(Icons.star, color: Colors.black,),
-      Icon(Icons.star, color: Colors.black,),
-    ],
-  );
-
 
   Widget titlesection = Container(
     padding: const EdgeInsets.all(32),
@@ -63,11 +104,9 @@ Widget buildHomePage(String titlevar, BuildContext context){
               ],
             ),
         ),
-        Icon(
-          Icons.star,
-          color: Colors.red[500],
-        ),
-        const Text('41'),
+        // je dois mettre l'étoile et le 41 ici
+        FavoriteWidget(),
+
       ],
     ),
   );
@@ -117,7 +156,7 @@ Widget buildHomePage(String titlevar, BuildContext context){
     appBar: AppBar(
       title: const Text('First Devoir'),
     ),
-    body: Column(
+    body: ListView(
       children: [
         Image.asset(
           'assets/images/lake.jpg',
